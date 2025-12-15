@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ موقع أنس لكرة القدم - نبض الساحرة المستديرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ------------------------------------------- */
+        /* متغيرات الألوان والتصميم (CSS Variables) */
+        /* ------------------------------------------- */
+        :root {
+            --color-dark-bg: #0a192f;        /* كحلي داكن للخلفية */
+            --color-primary: #00ffc4;        /* أخضر نيون للحيوية */
+            --color-secondary: #ff6f61;      /* أحمر رياضي للهوفر والتأكيد */
+            --color-text-light: #ccd6f6;     /* نص فاتح مقروء */
+            --color-card-bg: #112240;        /* خلفية البطاقات أفتح قليلاً */
+        }
+
+        /* ------------------------------------------- */
+        /* التنسيقات الأساسية (Base Styling) */
+        /* ------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            direction: rtl; /* دعم اللغة العربية */
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-secondary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* ------------------------------------------- */
+        /* تنسيقات الرأس (Header & Navigation) */
+        /* ------------------------------------------- */
+        header {
+            background-color: var(--color-card-bg);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--color-primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--color-primary);
+            float: right;
+        }
+
+        nav ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: right;
+            margin-right: 25px;
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            padding: 5px 10px;
+            display: block;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+             color: var(--color-secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px;
+            background: var(--color-secondary);
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ------------------------------------------- */
+        /* القسم الترويجي (Hero Section) */
+        /* ------------------------------------------- */
+        #hero {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--color-dark-bg) 0%, #15345a 100%);
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 255, 196, 0.5);
+        }
+
+        #hero p {
+            font-size: 1.3em;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--color-primary); 
+            color: var(--color-dark-bg); 
+            padding: 15px 30px; 
+            border: none;
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 1.1em;
+            display: inline-block; 
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 196, 0.4); 
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-secondary); 
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.6);
+            transform: translateY(-3px); 
+            color: white;
+        }
+
+        /* ------------------------------------------- */
+        /* تنسيقات الأقسام الرئيسية والمحتوى */
+        /* ------------------------------------------- */
+        section {
+            padding: 60px 0;
+            min-height: 400px;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--color-secondary);
+            padding-bottom: 15px;
+            font-weight: 900;
+        }
+
+        /* تنسيق بطاقات المحتوى (Card Grid) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: var(--color-card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border-right: 5px solid var(--color-primary); /* شريط نيون جانبي */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 196, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            color: var(--color-secondary);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--color-text-light);
+            padding-bottom: 5px;
+        }
+        
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        /* ------------------------------------------- */
+        /* تنسيقات قسم الفيديوهات (Videos) */
+        /* ------------------------------------------- */
+        .video-card-wrapper {
+             position: relative;
+             padding-bottom: 56.25%; /* نسبة 16:9 للفيديو */
+             height: 0;
+             overflow: hidden;
+             margin-bottom: 15px;
+        }
+        
+        .video-card-wrapper iframe {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border-radius: 8px;
+             border: 2px solid var(--color-primary); 
+        }
+        
+        /* ------------------------------------------- */
+        /* تنسيقات التذييل (Footer) */
+        /* ------------------------------------------- */
+        footer {
+            background-color: var(--color-card-bg);
+            text-align: center;
+            padding: 25px 0;
+            border-top: 2px solid var(--color-secondary);
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container clearfix">
+            <div class="logo">موقع أنس لكرة القدم</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#worldcup">🏆 كأس العالم 2026</a></li>
+                    <li><a href="#videos">🎥 الفيديوهات والملخصات</a></li>
+                    <li><a href="#news">📰 الأخبار والمقالات</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>أهلاً بك في موقع أنس!</h1>
+            <p>تحليل عميق، ملخصات حصرية، وتغطية شاملة لكل ما يخص **الساحرة المستديرة**.</p>
+            <a href="#worldcup" class="cta-button">تغطية خاصة لكأس العالم 2026</a>
+        </div>
+    </section>
+
+    <section id="worldcup" class="container">
+        <h2>🏆 تحليل واستعدادات كأس العالم 2026 (48 منتخبًا)</h2>
+        <p>البطولة القادمة في أمريكا الشمالية (الولايات المتحدة، كندا، المكسيك) ستشهد تاريخًا جديدًا. نستعرض هنا أبرز التوقعات والتجهيزات:</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200/00ffc4/0a192f?text=ملعب+كأس+العالم" alt="ملعب كأس العالم">
+                <h3>جاهزية الملاعب والمدن</h3>
+                <p>نظرة على الملاعب الجديدة العملاقة التي ستستضيف المباريات والمناطق المخصصة للجماهير والتدريب.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200/ff6f61/0a192f?text=نجوم+صاعدة" alt="نجوم صاعدة">
+                <h3>ملفات اللاعبين الصاعدين</h3>
+                <p>قائمة بأبرز المواهب الشابة التي من المتوقع أن تضيء سماء البطولة وتنافس بقوة على الألقاب الفردية.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200/ccd6f6/0a192f?text=توقعات+المجموعات" alt="توقعات المجموعات">
+                <h3>تحليل مسار البطولة</h3>
+                <p>دراسة متعمقة لنظام البطولة الجديد وتوقعاتنا للمنتخبات المرشحة للوصول إلى الأدوار النهائية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="container">
+        <h2>🎥 مكتبة الفيديوهات والملخصات الحصرية</h2>
+        <p>أفضل لقطات الأسبوع، وملخصات مباريات الدوريات الكبرى، وأهداف لن تنساها!</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>🔥 ملخص الكلاسيكو: قمة الإثارة والجنون</h3>
+                <div class="video-card-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/sZ6dbnli6Gs" 
+                        title="ملخص الكلاسيكو" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p>شاهد الأهداف واللقطات المثيرة من قمة الكرة الإسبانية بأعلى جودة وتعليق مميز.</p>
+            </div>
+
+            <div class="card">
+                <h3>⭐ أجمل 10 أهداف تاريخية لا تنسى!</h3>
+                <div class="video-card-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Ya8XrL8POMc" 
+                        title="أجمل الأهداف" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p>تجميع لأروع الأهداف التي سجلت في تاريخ كرة القدم العالمية، بلمسات سحرية.</p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 تحليل تكتيكي لأداء المدرب الجديد</h3>
+                <div class="video-card-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Ubc4kRhg9Lo" 
+                        title="تحليل تكتيكي" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p>تحليل معمق لطريقة لعب الفريق وخطط المدرب الأخيرة في مواجهة الخصوم. تفكيك الأداء الفني!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="container">
+        <h2>📰 آخر الأخبار والمقالات الحصرية</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3>خبر عاجل: صفقة القرن تقترب!</h3>
+                <p>تشير المصادر إلى أن النجم الفلاني على وشك الانضمام لناديه الجديد بصفقة ضخمة... ترقبوا التغطية.</p>
+                <a href="#">اقرأ المقال كاملاً</a>
+            </div>
+            <div class="card">
+                <h3>مقال: هل انتهى عصر التيكي تاكا؟</h3>
+                <p>مراجعة للطرق التكتيكية الحديثة وكيف أثرت على الأساليب الكلاسيكية في اللعب وهل يجب التغيير؟</p>
+                <a href="#">اقرأ المقال كاملاً</a>
+            </div>
+            <div class="card">
+                <h3>إصابة مؤثرة قبل مباراة القمة</h3>
+                <p>تأكد غياب المدافع الأساسي للفريق الخصم بسبب إصابة تعرض لها في التدريبات الأخيرة.. ماذا يعني ذلك؟</p>
+                <a href="#">اقرأ المقال كاملاً</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 موقع أنس لكرة القدم. جميع الحقوق محفوظة. <span style="color: var(--color-primary); font-weight: bold;">تصميم خاص بانس</span></p>
+        </div>
+    </footer>
+
+</body>
+</html>
